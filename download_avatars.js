@@ -12,8 +12,11 @@ function getRepoContributors(repoOwner, repoName, cb) {
       }
     };
   request(options, function(err, res, body){
-      cb(err, body);
-  });
+      var data = JSON.parse(body);
+      cb(err, data.forEach(function(data) {
+          console.log(data.avatar_url);
+      }))
+  })
 }
 
 getRepoContributors("jquery", "jquery", function (err, result){
