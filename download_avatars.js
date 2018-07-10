@@ -3,6 +3,9 @@ var secrets = require('./secrets');
 var fs = require('fs');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
+if (!process.argv[2] || !process.argv[3]) {
+  throw 'You must enter both a repoOwner and a repoName';
+}
 
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
@@ -33,4 +36,3 @@ getRepoContributors(process.argv[2], process.argv[3], function (err, result) {
 });
 
 //downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
-
